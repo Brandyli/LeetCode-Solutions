@@ -1,1 +1,4 @@
-select distinct(salary) as SecondHighestSalary from Employee order by salary desc limit 1 offset 1;
+SELECT IFNULL(
+    (SELECT DISTINCT salary FROM Employee 
+     ORDER BY salary 
+     LIMIT 1 OFFSET 1), NULL) AS SecondHighestSalary
