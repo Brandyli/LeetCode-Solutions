@@ -46,6 +46,13 @@ BEGIN
   );
 END
 
+Key: 
+- define a function using sub-query
+- getNthHighestSalary(N INT): N = rank, INT = salary
+- RETURNS INT: the goal - is to get the accordingly salary
+
+- in dense_rank(), we need to define the rankn order using salary desc
+- Is a newly defined table, so a.rankn = N???
 
 A:
 CREATE FUNCTION getNthHighestSalary(N INT) RETURNS INT
