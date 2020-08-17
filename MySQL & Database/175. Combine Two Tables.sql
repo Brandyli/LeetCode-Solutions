@@ -27,6 +27,7 @@ regardless if there is an address for each of those people:
 
 ```FirstName, LastName, City, State```
 
+---Brandy Knowledge Check--- LEFT OUTER JOIN or RIGHT OUTER JOIN
 ** If you are joining two tables and want the result set to "include unmatched rows from only one table", 
 ** use a LEFT OUTER JOIN clause or a RIGHT OUTER JOIN clause.
 
