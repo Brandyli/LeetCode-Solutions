@@ -21,7 +21,8 @@ For example, given the above Logs table, 1 is the only number that appears conse
 | 1               |
 +-----------------+
 
-Key:
+Key: Duplicate 3 tables and use table.id = table.id-1 to make the order consecutive
+
 ** select any Num column from the above table to get the target data
 ** DISTINCT needs to be added, because it will display a duplicated number if one number appears more than 3 times consecutively.
 - beacuse we need to find all numbers tha appear "at least 3 times consecutively", 3 seperate tables are needed to query
