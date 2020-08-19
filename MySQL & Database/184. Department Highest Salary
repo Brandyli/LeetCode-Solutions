@@ -23,7 +23,8 @@ Q:
 Write a SQL query to find employees who have the "highest salary" in each of the departments. 
 For the above tables, your SQL query should return the following rows (order of rows does not matter).
 
-Key: "max/min/avg" cannot be used directly in "select" but sub-query works
+**Key: "max/min/avg" cannot be used directly in "select" but sub-query works
+
 
 +------------+----------+--------+
 | Department | Employee | Salary |
