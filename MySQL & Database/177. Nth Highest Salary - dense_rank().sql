@@ -1,6 +1,21 @@
 Key: DENSE_RANK()
 
-The difference between DENSE_RANK() & RANK()
+Difference: DENSE_RANK() & RANK()
+RANK: This gives you the ranking within your ordered partition. 
+Ties are assigned the same rank, with the next ranking(s) skipped. 
+Therefore, if you have 3 items at rank 2, the next rank listed will be ranked 5.
+
+DENSE_RANK: This gives you the ranking within your ordered partition, but the ranks are consecutive in it. 
+Also, no ranks are skipped if there are ranks with multiple items.
+
+Definitions:
+RANK() is a window function -- to calculate a rank for each row within a partition of a result set.
+
+RANK() OVER (
+    [PARTITION BY partition_expression, ... ]
+    ORDER BY sort_expression [ASC | DESC], ...
+)
+
 
 The DENSE_RANK() is a window function & has 2 features
 - Assigns a rank to each row within a partition of a result set 
@@ -53,6 +68,7 @@ Key:
 
 - in dense_rank(), we need to define the rankn order using salary desc
 - Is a newly defined table, so a.rankn = N???
+
 
 A:
 CREATE FUNCTION getNthHighestSalary(N INT) RETURNS INT
