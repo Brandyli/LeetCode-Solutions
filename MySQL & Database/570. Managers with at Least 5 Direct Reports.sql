@@ -1,5 +1,6 @@
 Q:
-Given the Employee table, write a SQL query that finds out managers with at least 5 direct report. For the above table, your SQL query should return:
+Given the Employee table, write a SQL query that finds out managers with at least 5 direct report. 
+For the above table, your SQL query should return:
 
 1. with at least 5 direct report - having count(ManagerId) >= 5)
 2. managers with at least 5 direct report -
