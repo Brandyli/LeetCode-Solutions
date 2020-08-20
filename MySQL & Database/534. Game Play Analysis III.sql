@@ -4,7 +4,6 @@ That is, the total number of games played by the player until that date. Check t
 Key: window function: sum(k1) over (partition by k2 order by k3)
 
 how many games played - sum(games_played)
-until that date - order by event_date
 by the player - partition by player_id
 
 A:
