@@ -1,7 +1,18 @@
-X city opened a new cinema, many people would like to go to this cinema. The cinema also gives out a poster indicating the movies’ ratings and descriptions.
-Please write a SQL query to output movies with an odd numbered ID and a description that is not 'boring'. Order the result by rating.
+Key: The MOD() function returns the remainder of x divided by y.
+MOD(x, y) x>y
+
+odd numbered ID --> mod(id,2)=1
 
  
+A:
+select * from cinema
+where mod(id, 2) = 1 and description != 'boring'
+order by rating desc;
+
+X city opened a new cinema, many people would like to go to this cinema. The cinema also gives out a poster indicating the movies’ ratings and descriptions.
+Q:
+Please write a SQL query to output movies with an odd numbered ID and a description that is not 'boring'. Order the result by rating.
+
 
 For example, table cinema:
 
@@ -21,7 +32,3 @@ For the example above, the output should be:
 |   5     | House card|   Interesting|   9.1     |
 |   1     | War       |   great 3D   |   8.9     |
 +---------+-----------+--------------+-----------+
- 
-select * from cinema
-where mod(id, 2) = 1 and description != 'boring'
-order by rating desc;
