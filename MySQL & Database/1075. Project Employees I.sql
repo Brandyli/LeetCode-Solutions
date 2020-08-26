@@ -1,3 +1,9 @@
+Key:
+table 1 join table 2 using (common key)
+
+ROUND(SUM(experience_years)/COUNT(employee_id),2)->the average experience years of all the employees for each project
+
+A:
 SELECT project_id, ROUND(SUM(experience_years)/COUNT(employee_id),2) AS average_years
 FROM  project JOIN employee USING(employee_id)
 GROUP BY project_id;
