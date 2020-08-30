@@ -1,4 +1,3 @@
-
 Key: 
 datediff()
 ifnull()
