@@ -2,7 +2,7 @@ key:distinct
 
 A:
 # 1) find all the authors that viewed at least one of their own articles
-select distinct viewer_id as id 
+select distinct author_id as id 
 from Views 
 where author_id=viewer_id
 
