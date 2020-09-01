@@ -26,9 +26,9 @@ Table: Events
 Each row in the table logs the info that an event of some type occured at some business for a number of times.
  
 Q:
-Write an SQL query to find all active businesses.
+Write an SQL query to find all active businesses. (what is 'active businesses'?)
 
-An active business is a business that has more than one event type with occurences greater than the average occurences of that event type among all businesses.
+An active business is a business that has more than one event type with occurences greater than the average occurences of that event type among all businesses. (2 conditions)
 
 The query result format is in the following example:
 
