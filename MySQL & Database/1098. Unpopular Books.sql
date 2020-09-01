@@ -7,13 +7,20 @@ A:
 select b.book_id, b.name
 from Books b left join Orders o
 on b.book_id=o.book_id
-and dispatch_date between '2018-06-23' and '2019-06-23' --> in the last year
-where datediff('2019-06-23',available_from) > 30 --> excluding books that have been available for less than 1 month from today. Assume today is 2019-06-23.
+
+2）in the last year.Assume today is 2019-06-23.
+and dispatch_date between '2018-06-23' and '2019-06-23' 
+
+3）excluding books that have been available for less than 1 month from today. Assume today is 2019-06-23.
+# in other words, we need to include books available which are larger than 30 days
+
+where datediff('2019-06-23',available_from) > 30 
 group by b.book_id, b.name
-having ifnull(sum(quantity),0)<10; --> books that have sold less than 10 copies
+
+1）books that have sold less than 10 copies
+having ifnull(sum(quantity),0)<10; 
 
 Table: Books
-
 +----------------+---------+
 | Column Name    | Type    |
 +----------------+---------+
@@ -23,7 +30,6 @@ Table: Books
 +----------------+---------+
 book_id is the primary key of this table.
 Table: Orders
-
 +----------------+---------+
 | Column Name    | Type    |
 +----------------+---------+
@@ -35,7 +41,6 @@ Table: Orders
 order_id is the primary key of this table.
 book_id is a foreign key to the Books table.
  
-
 Q:
 Write an SQL query that reports the books that have sold less than 10 copies in the last year, excluding books that have been available for less than 1 month from today. Assume today is 2019-06-23.
 
@@ -54,7 +59,7 @@ Books table:
 
 Orders table:
 +----------+---------+----------+---------------+
-| order_id | book_id | quantity | dispatch_date |
+| order_id | book_id | quantity | dispatch_date |-->deliver date
 +----------+---------+----------+---------------+
 | 1        | 1       | 2        | 2018-07-26    |
 | 2        | 1       | 1        | 2018-11-05    |
