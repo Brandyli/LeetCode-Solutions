@@ -4,24 +4,18 @@ Key:
 3) average_daily_percent
 
 A:
-
-3) average_daily_percent
-# rounded to 2 decimal places.
-# the average for daily percentage of posts
-
+3) the average for daily percentage of removal posts --> removal%/days
 select round(sum(percent)/count(distinct action_date),2) as average_daily_percent from
 
-2) percent
-(select action_date, count(distinct r.post_id)/count(distinct a.post_id)*100 as percent   --> posts that got removed
+2) percent that posts that got removed (condition: removal.post_id< acitons.post_id)
+(select action_date, count(distinct r.post_id)/count(distinct a.post_id)*100 as percent 
 
-1) left join tables
+1) left join 2 tables to generate new t table narrowing posts to spam
 from Actions a left join Removals r
 on a.post_id=r.post_id
-where extra='spam' --> after being reported as spam
+where extra='spam' 
 group by 1) t;
-  
-
-
+ 
 +---------------+---------+
 | Column Name   | Type    |
 +---------------+---------+
@@ -45,11 +39,8 @@ Table: Removals
 post_id is the primary key of this table.
 Each row in this table indicates that some post was removed as a result of being reported or as a result of an admin review.
  
-
 Q:
-
 Write an SQL query to find the average for daily percentage of posts that got removed after being reported as spam, rounded to 2 decimal places.
-
 The query result format is in the following example:
 
 Actions table:
