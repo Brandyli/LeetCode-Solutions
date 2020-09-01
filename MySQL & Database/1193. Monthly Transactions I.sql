@@ -8,7 +8,7 @@ date_format(trans_date, '%Y-%m') as month,country, # DATE_FORMAT(date, format)
 count(id) as trans_count,
 count(if(state='approved',1,null)) as approved_count, # it counts time
 sum(amount) as trans_total_amount,
-sum(if(state='approved',amount,0)) as approved_total_amount #it sum the amount
+sum(if(state='approved',amount,0)) as approved_total_amount #it sums the amount
 from Transactions
 group by 1,2; # for each month and country
 
