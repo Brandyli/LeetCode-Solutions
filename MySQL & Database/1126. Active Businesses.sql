@@ -1,15 +1,20 @@
 Key:avg(k1) over(partition by k2)
 
 A:
-select business_id              # 3) that event type
+select business_id              
+
+3) the average occurences of 'that event type' among all businesses 
 from (select *, avg(occurences) over(partition by event_type) as mean from Events) as t
-where occurences > mean --> 2)occurences greater than the average occurences of that event type among all businesses.
+
+2)occurences greater than mean=the average occurences of 'that event type' among all businesses
+where occurences > mean 
 group by business_id 
-having count(distinct event_type) >1; -->  1) a business that has more than one event type
+
+1) a business that has more than one event type
+having count(distinct event_type) >1;   
 
 
 Table: Events
-
 +---------------+---------+
 | Column Name   | Type    |
 +---------------+---------+
