@@ -41,6 +41,7 @@ Each row in this table indicates that some post was removed as a result of being
  
 Q:
 Write an SQL query to find the average for daily percentage of posts that got removed after being reported as spam, rounded to 2 decimal places.
+
 The query result format is in the following example:
 
 Actions table:
