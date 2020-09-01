@@ -4,16 +4,18 @@ A:
 
 # to find the percentage of immediate orders in the first orders of all customers, rounded to 2 decimal places.
 
-select round(100*sum(order_date= customer_pref_delivery_date)/count(*),2) as immediate_percentage
+1) immediate_percentage=the percentage of immediate orders. rounded to 2 decimal places.
+# - what is immediate orders? --> the preferred delivery date of the customer = the order date then the order 
+select round(100*sum(order_date=customer_pref_delivery_date)/count(*),2) as immediate_percentage
 from Delivery
+
+2) in the first orders-->min(order_date)
 where (customer_id, order_date) in 
-(select customer_id, min(order_date) from Delivery #in the first orders
+(select customer_id, min(order_date) from Delivery 
 group by customer_id);
 
 
-
 Table: Delivery
-
 +-----------------------------+---------+
 | Column Name                 | Type    |
 +-----------------------------+---------+
@@ -25,7 +27,6 @@ Table: Delivery
 delivery_id is the primary key of this table.
 The table holds information about food delivery to customers that make orders at some date and specify a preferred delivery date (on the same order date or after it).
  
-
 If the preferred delivery date of the customer is the same as the order date then the order is called immediate otherwise it's called scheduled.
 
 The first order of a customer is the order with the earliest order date that customer made. It is guaranteed that a customer has exactly one first order.
