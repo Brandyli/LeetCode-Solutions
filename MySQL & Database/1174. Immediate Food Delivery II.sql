@@ -32,7 +32,7 @@ If the preferred delivery date of the customer is the same as the order date the
 The first order of a customer is the order with the earliest order date that customer made. It is guaranteed that a customer has exactly one first order.
 
 Q:
-Write an SQL query to find the percentage of immediate orders in the first orders of all customers, rounded to 2 decimal places.
+Write an SQL query to find the percentage of immediate orders in the first orders of all customers, rounded to 2 decimal places.(what is 'immediate orders'?)
 
 The query result format is in the following example:
 
