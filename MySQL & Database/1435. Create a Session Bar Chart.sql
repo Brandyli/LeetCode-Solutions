@@ -59,6 +59,7 @@ duration is the time in seconds that a user has visited the application.
 
 You want to know how long a user visits your application. You decided to create bins of "[0-5>", "[5-10>", "[10-15>" and "15 minutes or more" and count the number of sessions on it.
 
+Q:
 Write an SQL query to report the (bin, total) in any order.
 
 The query result format is in the following example.
