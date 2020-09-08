@@ -37,16 +37,6 @@ on v1.name = e.left_operand
 join Variables v2
 on v2.name = e.right_operand
 
-
-# Just for reference, the result is correct but in different order 
-
-select e.*, if(left_operand<>right_operand, 'false', 'true') as value
-from Expressions e join Variables v1 
-on v1.name=left_operand
-join Variables v2
-on v2.name=right_operand
-order by e.left_operand
-
 Table Variables:
 
 +---------------+---------+
