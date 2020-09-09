@@ -2,7 +2,7 @@ Key: case when
 
 Logic:
 
-1) sketch the structure: Join three tables -- since name originates from both left_operand & right_operand, so we need two tables Varibale
+# 1) sketch the structure: Join three tables -- since name originates from both left_operand & right_operand, so we need two tables Varibale
 # +--------------+----------+---------------+-------+
 # | left_operand | operator | right_operand | value |
 # +--------------+----------+---------------+-------+
