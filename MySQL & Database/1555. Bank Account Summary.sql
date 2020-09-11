@@ -34,6 +34,7 @@ group by user_id;
 ifnull(sum(case when u.user_id=t.paid_by then -amount else amount end),0)+u.credit as credit,
 
 # 3) credit_limit_breached, check credit_limit ("Yes" or "No")
+# case when condition then 'No' else 'Yes' end
 # ifnull(condition,0)>=-u.credit
 # sum()
 # case when u.user_id=t.paid_by then -amount else amount end
