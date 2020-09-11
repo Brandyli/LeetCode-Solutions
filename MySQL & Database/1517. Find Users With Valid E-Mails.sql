@@ -1,3 +1,6 @@
+Key:regexp_like(mail,'^[A-Za-z]+[A-Za-z0-9\_\.\-]*@leetcode.com')
+Logic: from Leetcode
+
 """
 A detailed explanation of the following regular expression solution:
 
