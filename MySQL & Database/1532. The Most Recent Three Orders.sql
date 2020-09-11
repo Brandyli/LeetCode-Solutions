@@ -11,7 +11,9 @@ on c.customer_id=o1.customer_id
 # 2) find the most recent 3 orders of each user
 where (select count(*) from Orders o2
       where o1.customer_id=o2.customer_id
-      and o1.order_date<o2.order_date<=2) # ----why it is <=2?? 
+      # ----Since it potentially counts the first order_date for the base comparison
+      # the rest recent orders needed to be found
+      and o1.order_date<o2.order_date)<=2) 
       
 # 3) sorted by customer_name in ascending order and in case of a tie by the customer_id in ascending order.If there still a tie, order them by the order_date in descending order.
 order by customer_name asc, customer_id asc,order_date desc;
