@@ -1,3 +1,5 @@
+Key: sum(units*Width*Length*Height) volume
+
 Q: How much cubic feet of volume does the inventory occupy in each warehouse.
 
 logic:
