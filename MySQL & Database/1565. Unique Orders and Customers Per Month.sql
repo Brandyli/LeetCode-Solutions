@@ -1,13 +1,26 @@
-Q:
+Key:  date_format(order_date,'%Y-%m') as month
 
-# 1) find the number of unique orders and the number of unique customers with invoices > $20 for each different month.
+Q:find the number of unique orders and the number of unique customers with invoices > $20 for each different month.
 
+Logic:
+# 1) find the number of unique orders and the number of unique customers
+select date_format(order_date,'%Y-%m') as month, 
+count(distinct order_id) order_count, 
+count(distinct customer_id) customer_count
+from Orders
+
+# 2) with invoices > $20 for each different month.
+where invoice >20 
+group by month
+
+A:
 select date_format(order_date,'%Y-%m') as month, 
 count(distinct order_id) order_count, 
 count(distinct customer_id) customer_count
 from Orders
 where invoice >20 
 group by month
+
 
 
 Table: Orders
