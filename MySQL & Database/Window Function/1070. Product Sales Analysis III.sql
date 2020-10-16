@@ -1,3 +1,6 @@
+Q:
+Write an SQL query that selects the product id, year, quantity, and price for the first year of every product sold.
+
 Key: Window funciton
 
 ROW_NUMBER() OVER (
@@ -6,8 +9,13 @@ ROW_NUMBER() OVER (
 )
 
 A:
-select product_id, year as first_year, quantity, price
-from (select *, row_number() over (partition by product_id order by year) as row_rank from sales) a
+#1 selects the product id, year, quantity
+select product_id, year as first_year, quantity, 
+
+# 2 and price for the _first year_ of every _product sold_
+price from (
+    select *, row_number() over (partition by product_id order by year) 
+    as row_rank from sales) a
 where a.row_rank = 1;
 
 
@@ -38,9 +46,6 @@ Table: Product
 +--------------+---------+
 product_id is the primary key of this table.
  
-
-Q:
-Write an SQL query that selects the product id, year, quantity, and price for the first year of every product sold.
 
 The query result format is in the following example:
 
