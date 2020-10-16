@@ -2,7 +2,10 @@ Key:2 if()/isnull()
 Key:2 if()/isnull()
 
 A:
-select a.id, if(isnull(a.p_id), 'Root', if(a.id in (select p_id from tree), 'Inner','Leaf')) Type from tree a 
+select a.id, 
+if(isnull(a.p_id), 'Root', 
+   if(a.id in (select p_id from tree), 'Inner','Leaf')
+  ) Type from tree a 
 order by a.id;
                    
 Given a table tree, id is identifier of the tree node and p_id is its parent node's id.
