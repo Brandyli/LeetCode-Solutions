@@ -1,4 +1,4 @@
-Q: Write an SQL query that reports for each player and date, how many games played so far by the player. 
+Q: Write an SQL query that reports for *each player and date*, *how many games played* so far by the player. 
 That is, the total number of games played by the player until that date. Check the example for clarity.
 
 Key: window function: sum(k1) over (partition by k2 order by k3)
@@ -7,8 +7,11 @@ how many games played - sum(games_played)
 by the player - partition by player_id
 
 A:
-select player_id, event_date, sum(games_played) 
-over (partition by player_id order by event_date) as games_played_so_far 
+# 1. Query each player and date
+select player_id, event_date, 
+
+# 2. The total number of games played by the player until that date
+sum(games_played) over(partition by player_id order by event_date) as games_played_so_far 
 from Activity
 order by player_id, games_played_so_far; --> can be neglected
 
