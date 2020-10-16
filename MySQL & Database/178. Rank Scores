@@ -1,8 +1,28 @@
-SQL Schema
+Key -- Dense_rank()
 
-Q: 
-Write a SQL query to rank scores. If there is a tie between two scores, both should have the "same ranking". 
+Q:
+Write a SQL query to *rank scores*. If there is a tie between two scores, both should have the "same ranking". 
 Note that after a tie, the next ranking number should be the "next consecutive" integer value. In other words, there should be no "holes" between ranks.
+
+** Select score & generate Rank -- but where is Rank from?
+** Rank using DENSE_RANK() OVER (ORDER BY Score DESC) AS Rank -- Since rank depends on how the score is.
+
+A1:
+SELECT Score, 
+DENSE_RANK() OVER (ORDER BY Score DESC) AS Rank
+
+FROM Scores
+
+A2:
+SELECT s1.Score, 
+(SELECT COUNT(DISTINCT s2.Score)+1 FROM Scores s2 
+WHERE s1.Score< s2.Score) AS Rank 
+
+FROM Scores s1
+ORDER BY Score DESC
+
+
+
 
 +----+-------+
 | Id | Score |
@@ -27,16 +47,3 @@ For example, given the above Scores table, your query should generate the follow
 | 3.50  | 4       |
 +-------+---------+
 Important Note: For MySQL solutions, to escape reserved words used as column names, you can use an apostrophe before and after the keyword. For example `Rank`.
-
-Key -- dense_rank()
-** Select score & generate Rank -- but where is Rank from?
-** Rank using DENSE_RANK() OVER (ORDER BY Score DESC) AS Rank -- Since rank depends on how the score is.
-
-MySQL Solution:
-SELECT s1.Score, (SELECT COUNT(DISTINCT s2.Score)+1 FROM Scores s2 WHERE s1.Score< s2.Score) AS Rank 
-FROM Scores s1
-ORDER BY Score DESC
-
-MS SQL Solution
-SELECT Score, DENSE_RANK() OVER (ORDER BY Score DESC) AS Rank
-FROM Scores
