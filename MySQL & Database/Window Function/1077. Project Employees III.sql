@@ -1,12 +1,21 @@
+
+Q: 
+Write an SQL query that reports the most experienced employees in each project. 
+In case of a tie, report all employees with the maximum number of experience years.
+
+#Key: dense_rank() over() 
 A:
 
-select project_id, employee_id from 
+select project_id, 
 
-#Key: report all employees with the maximum number of experience years
-
-(select p.project_id, e.employee_id, dense_rank() over(partition by p.project_id order by e.experience_years desc) rank_n
+#1 report all employees with the maximum number of experience years
+employee_id from (select p.project_id, e.employee_id, 
+                  dense_rank() over(partition by p.project_id order by e.experience_years desc) rank_n
+                  
 from project p join employee e
 on p.employee_id=e.employee_id) t
+
+#2 _maximum number_ of experience years
 where t.rank_n=1;
  
 Table: Project
@@ -31,8 +40,6 @@ Table: Employee
 employee_id is the primary key of this table.
  
 
-Q: 
-Write an SQL query that reports the most experienced employees in each project. In case of a tie, report all employees with the maximum number of experience years.
 
 The query result format is in the following example:
 
