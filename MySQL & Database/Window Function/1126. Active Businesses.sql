@@ -1,16 +1,21 @@
+Q:
+Write an SQL query to _find all active businesses_. (what is 'active businesses'?)
+
+An active business is a business that has _more than one event type_ with _occurences greater than the average occurences_ of that event type among all businesses. (2 conditions)
+
 Key:avg(k1) over(partition by k2)
 
 A:
-select business_id              
+select business_id from              
 
-3) the average occurences of 'that event type' among all businesses 
-from (select *, avg(occurences) over(partition by event_type) as mean from Events) as t
+# 3) the average occurences of 'that event type' among all businesses 
+(select *, avg(occurences) over(partition by event_type) as mean from Events) as t
 
-2)occurences greater than mean=the average occurences of 'that event type' among all businesses
+# 2)occurences greater than mean=the average occurences of 'that event type' among all businesses
 where occurences > mean 
 group by business_id 
 
-1) a business that has more than one event type
+# 1) a business that has more than one event type
 having count(distinct event_type) >1;   
 
 
@@ -25,10 +30,6 @@ Table: Events
 (business_id, event_type) is the primary key of this table.
 Each row in the table logs the info that an event of some type occured at some business for a number of times.
  
-Q:
-Write an SQL query to find all active businesses. (what is 'active businesses'?)
-
-An active business is a business that has more than one event type with occurences greater than the average occurences of that event type among all businesses. (2 conditions)
 
 The query result format is in the following example:
 
