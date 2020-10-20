@@ -18,6 +18,11 @@ price from (
     as row_rank from sales) a
 where a.row_rank = 1;
 
+2nd practice 10/20
+A:
+select product_id, year as first_year, quantity, price 
+from (select *, row_number() over (partition by product_id order by year) as row_rank from Sales) a
+where a.row_rank = 1;
 
 Reference:
 https://www.sqlservertutorial.net/sql-server-window-functions/sql-server-row_number-function/
