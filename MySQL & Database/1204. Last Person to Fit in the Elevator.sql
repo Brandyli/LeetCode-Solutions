@@ -1,16 +1,25 @@
 Key:window function:sum(k1) over(order by k2)
 
 A:
-1) to find the person_name of the last person who will fit in the elevator without exceeding the weight limit
+# 1) to find the person_name of the last person who will fit in the elevator without exceeding the weight limit
 select person_name
 from (select person_name,weight,turn, sum(weight) over(order by turn) as summ from Queue) t
 
-2)The maximum weight the elevator can hold is 1000.
+# 2)The maximum weight the elevator can hold is 1000.
 where summ<=1000 
 
-3) the last person
+# 3) the last person
 order by turn desc 
 limit 1; 
+
+10222020 2nd practice
+A2:
+select person_name from
+(select *, sum(weight) over(order by turn) summ from Queue) t
+where summ <=1000
+order by turn desc
+limit 1;
+
 
 Table: Queue
 
