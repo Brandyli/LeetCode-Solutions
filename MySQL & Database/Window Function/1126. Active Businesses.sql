@@ -18,7 +18,16 @@ group by business_id
 # 1) a business that has more than one event type
 having count(distinct event_type) >1;   
 
-
+# 10/22/2020 
+A:
+ select business_id from
+ (select *, avg(occurences) over(partition by event_type) as mean 
+ from Events) t 
+ where occurences > mean
+ group by business_id
+ having count(distinct event_type) > 1;
+ 
+ 
 Table: Events
 +---------------+---------+
 | Column Name   | Type    |
