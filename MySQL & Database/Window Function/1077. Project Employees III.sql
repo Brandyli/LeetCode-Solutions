@@ -17,6 +17,15 @@ on p.employee_id=e.employee_id) t
 
 #2 _maximum number_ of experience years
 where t.rank_n=1;
+
+
+10.20 2nd practice
+A:
+select project_id, employee_id from 
+(select p.project_id, e.employee_id, 
+ dense_rank() over(partition by p.project_id order by experience_years desc) rank_n 
+ from Project p join Employee e where e.employee_id = p.employee_id) temp
+where temp.rank_n = 1;
  
 Table: Project
 
