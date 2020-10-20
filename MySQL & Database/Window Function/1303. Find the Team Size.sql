@@ -1,5 +1,16 @@
+Key: count() over()
+
+Q: Write an SQL query to find the team size of each of the employees.
+
+
 A:
 select employee_id, count(*) over(partition by team_id) as team_size
+from Employee;
+
+
+10222020 2nd practice
+A:
+select  employee_id, count(employee_id) over(partition by team_id) as team_size
 from Employee;
 
 Table: Employee
@@ -12,8 +23,6 @@ Table: Employee
 +---------------+---------+
 employee_id is the primary key for this table.
 Each row of this table contains the ID of each employee and their respective team.
-Q: Write an SQL query to find the team size of each of the employees.
-
 Return result table in any order.
 
 The query result format is in the following example:
