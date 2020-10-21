@@ -1,3 +1,6 @@
+Q:
+Write an SQL query that reports the best seller by total sales price, If there is a tie, report them all.
+
 A:
 select seller_id from
 
@@ -6,7 +9,12 @@ select seller_id from
 (select seller_id, rank() over(order by sum(price) desc) rank_n
 from sales group by seller_id) t
 where t.rank_n=1;
-                     
+   
+10222020 2nd practice
+A2:
+select seller_id from 
+(select *, rank() over(order by sum(price) desc) r from Sales group by seller_id) t
+where t.r=1;
                      
 Table: Product
 
@@ -33,10 +41,6 @@ Table: Sales
 This table has no primary key, it can have repeated rows.
 product_id is a foreign key to Product table.
  
-
-Q:
-Write an SQL query that reports the best seller by total sales price, If there is a tie, report them all.
-
 The query result format is in the following example:
 
 Product table:
