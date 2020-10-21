@@ -1,3 +1,10 @@
+Key: rank() over()
+
+Q:
+Write an SQL query to find the names of all the activities with neither maximum, nor minimum number of participants.
+
+Return the result table in any order. Each activity in table Activities is performed by any person in the table Friends.
+
 
 #find the names of all the activities with neither maximum, nor minimum number of participants.
 
@@ -26,6 +33,16 @@ from Friends
 group by activity) t
 where minimum!=1 and maximum!=1;
 
+10222020 2nd practice
+A2:            
+select  activity from
+(select  activity,
+rank() over(order by count(id)) minn,
+rank() over(order by count(id) desc) maxx
+from Friends group by activity) t
+where t.minn!=1 and t.maxx!=1;
+            
+            
 Table: Friends
 
 +---------------+---------+
@@ -49,10 +66,6 @@ Table: Activities
 id is the primary key for this table.
 name is the name of the activity.
  
-
-Write an SQL query to find the names of all the activities with neither maximum, nor minimum number of participants.
-
-Return the result table in any order. Each activity in table Activities is performed by any person in the table Friends.
 
 The query result format is in the following example:
 
