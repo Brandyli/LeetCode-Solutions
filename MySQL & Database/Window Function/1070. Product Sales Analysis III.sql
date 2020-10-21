@@ -1,12 +1,7 @@
+Key: dense_rank() over()
 Q:
 Write an SQL query that selects the product id, year, quantity, and price for the first year of every product sold.
 
-Key: Window funciton
-
-ROW_NUMBER() OVER (
-    [PARTITION BY partition_expression, ... ]
-    ORDER BY sort_expression [ASC | DESC], ...
-)
 
 A:
 #1 selects the product id, year, quantity
