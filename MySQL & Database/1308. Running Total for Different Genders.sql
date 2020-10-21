@@ -1,8 +1,20 @@
 key:
 sum(k1) over(parition by k2 order by k3)
+
+Q:
+Write an SQL query to find the total score for each gender at each day.
+
+Order the result table by gender and day
 A:
 select gender, day, sum(score_points) over(partition by gender order by gender, day) as total 
 from Scores;
+
+10222020 2nd practice
+A2:
+select gender, day, 
+sum(score_points) over(partition by gender order by gender, day) total
+from Scores
+;
 
 Table: Scores
 
