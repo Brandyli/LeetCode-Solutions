@@ -1,9 +1,9 @@
+Key:avg() over()
+
 Q:
 Write an SQL query to _find all active businesses_. (what is 'active businesses'?)
 
 An active business is a business that has _more than one event type_ with _occurences greater than the average occurences_ of that event type among all businesses. (2 conditions)
-
-Key:avg(k1) over(partition by k2)
 
 A:
 select business_id from              
