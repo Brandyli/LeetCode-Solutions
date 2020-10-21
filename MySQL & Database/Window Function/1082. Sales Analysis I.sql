@@ -1,3 +1,5 @@
+Key: rank() over()
+
 Q:
 Write an SQL query that reports the best seller by total sales price, If there is a tie, report them all.
 
