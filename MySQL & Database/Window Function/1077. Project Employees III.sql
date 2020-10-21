@@ -1,9 +1,11 @@
 
+Key: dense_rank() over() 
+
 Q: 
 Write an SQL query that reports the most experienced employees in each project. 
 In case of a tie, report all employees with the maximum number of experience years.
 
-#Key: dense_rank() over() 
+
 A:
 
 select project_id, 
