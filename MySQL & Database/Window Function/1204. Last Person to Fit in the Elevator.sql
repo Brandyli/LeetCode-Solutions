@@ -1,4 +1,9 @@
-Key:window function:sum(k1) over(order by k2)
+Key:sum() over()
+Q:
+The maximum weight the elevator can hold is 1000.
+Write an SQL query to find the person_name of the last person who will fit in the elevator without exceeding the weight limit. 
+It is guaranteed that the person who is first in the queue can fit in the elevator.
+
 
 A:
 # 1) to find the person_name of the last person who will fit in the elevator without exceeding the weight limit
@@ -35,10 +40,6 @@ person_id is the primary key column for this table.
 This table has the information about all people waiting for an elevator.
 The person_id and turn columns will contain all numbers from 1 to n, where n is the number of rows in the table.
  
-
-The maximum weight the elevator can hold is 1000.
-
-Write an SQL query to find the person_name of the last person who will fit in the elevator without exceeding the weight limit. It is guaranteed that the person who is first in the queue can fit in the elevator.
 
 The query result format is in the following example:
 
