@@ -7,8 +7,18 @@ if(isnull(a.p_id), 'Root',
    if(a.id in (select p_id from tree), 'Inner','Leaf')
   ) Type from tree a 
 order by a.id;
+
+A2:
+select t.id,
+case when p_id is null then 'Root'
+when t.id in (select p_id from tree) then 'Inner'
+else 'Leaf' end
+as Type from tree t
+order by t.id;
                    
 Given a table tree, id is identifier of the tree node and p_id is its parent node's id.
+
+
 
 +----+------+
 | id | p_id |
