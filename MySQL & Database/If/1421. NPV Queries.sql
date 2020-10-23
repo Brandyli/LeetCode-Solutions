@@ -4,21 +4,22 @@ Logic:
 # | id   | year   | npv    |
 # +------+--------+--------+
 
-select b.id, b.year, 
+select id, year, 
 
 # 2)find the npv of all each query of queries table.
 
 ifnull(npv,0) as npv
 
 # 3) right join tables
-from NPV n right join Queries q
+from NPV right join Queries 
 using(id,year);
                  
 
 A:
-select id, year, ifnull(npv,0) as npv
-from NPV n right join Queries q
-using(id,year);
+select id,year,
+ifnull(npv,0) npv
+from NPV right join Queries 
+using (id,year);
                  
 
 Table: NPV
