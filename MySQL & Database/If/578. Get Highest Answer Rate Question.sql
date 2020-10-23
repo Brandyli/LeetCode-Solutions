@@ -2,10 +2,9 @@ Q:
 
 Write a sql query to identify the question which has the highest answer rate.
 
-Key:
+Key:  answer rate = answer #/question #
 
-feature engineering:
-sum(if(action="show", 1, null))
+
 
 A:
 
@@ -14,6 +13,21 @@ from Survey_log
 group by question_id
 order by count(answer_id)/sum(if(action="show", 1, null)) desc
 limit 1;
+                                 
+select question_id as survey_log
+from Survey_log
+group by question_id
+order by count(answer_id)/sum(if(action="answer", 1, null)) desc
+limit 1;                                 
+                                 
+A2
+                                 
+select question_id as survey_log
+from survey_log
+group by question_id
+order by count(answer_id) / count(distinct question_id) desc
+limit 1
+                                 
 
 SQL Schema
 Get the highest answer rate question from a table survey_log with these columns: id, action, question_id, answer_id, q_num, timestamp.
