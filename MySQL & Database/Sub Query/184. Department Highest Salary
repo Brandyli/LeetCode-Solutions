@@ -4,10 +4,27 @@ For the above tables, your SQL query should return the following rows (order of 
 
 **Key: "max/min/avg" cannot be used directly in "select" but sub-query works
 A:
-select d.Name as Department, e.Name as Employee, e.Salary 
-from Employee e, Department d
-where e.DepartmentId = d.id
-and e.Salary = (select max(salary) from Employee e where e.DepartmentId= d.id);
+Sub query
+select d.name Department, e.name Employee, e.Salary
+from Department d, Employee e 
+where e.DepartmentId=d.Id
+and e.salary = (select max(salary) from Employee e where e.DepartmentId=d.Id)
+
+Dense_rank() over()
+select t.Department, t.Employee, t.Salary from
+(select d.name Department, e.name Employee, e.Salary, 
+dense_rank() over(partition by d.Id order by salary desc) rank_n 
+from Department d, Employee e 
+where e.DepartmentId=d.Id) t
+where t.rank_n = 1
+
+Rank() over()
+select t.Department, t.Employee, t.Salary from
+(select d.name Department, e.name Employee, e.Salary, 
+rank() over(partition by d.Id order by salary desc) rank_n 
+from Department d, Employee e 
+where e.DepartmentId=d.Id) t
+where t.rank_n = 1
 
 
 SQL Schema
