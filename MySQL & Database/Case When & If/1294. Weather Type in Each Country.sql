@@ -28,6 +28,13 @@ from Countries c join Weather using (country_id)
 where day between '2019-11-01' and '2019-11-30'
 group by country_name;
 
+
+select country_name, 
+if(weather_state<=15,"Cold",if(weather_state>=25,"Hot","Warm")) as weather_type
+from Weather w left join Countries c using (country_id)
+where w.day between "2019-11-01" and "2019-11-30" 
+group by country_id;
+                               
 Table: Countries
 
 +---------------+---------+
