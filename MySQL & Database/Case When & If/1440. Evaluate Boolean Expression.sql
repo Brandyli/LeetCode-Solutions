@@ -37,6 +37,10 @@ on v1.name = e.left_operand
 join Variables v2
 on v2.name = e.right_operand
 
+
+If clause
+*If switch to "if", there are three conditions and brackets which will make clause complexed
+
 Table Variables:
 
 +---------------+---------+
