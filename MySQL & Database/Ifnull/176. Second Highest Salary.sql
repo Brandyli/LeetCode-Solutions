@@ -1,5 +1,16 @@
 Q: Write a SQL query to get the "second highest salary" from the Employee table.
 
+A:
+Sub query
+
+select ifnull(Salary,null) SecondHighestSalary
+from Employee
+where salary = (select salary from Employee order by salary desc limit 1 offset 1)
+
+
+select ifnull((select distinct salary from Employee order by salary desc limit 1 offset 1),null) SecondHighestSalary
+  
+
 +----+--------+
 | Id | Salary |
 +----+--------+
@@ -22,8 +33,5 @@ The result should be divided to 2 steps
 | 200                 |
 +---------------------+
 
-A:
-SELECT IFNULL(
-    (SELECT DISTINCT salary FROM Employee 
-     ORDER BY salary DESC
-     LIMIT 1 OFFSET 1), NULL) AS SecondHighestSalary
+  
+  
