@@ -27,6 +27,14 @@ and datediff(a.login_date,b.login_date) between 1 and 4
 group by a.id,a.login_date 
 having count(distinct b.login_date) = 4;
 
+
+Select id, name from Accounts where id in 
+(Select id from
+(Select distinct id, login_date, dense_rank() over (Partition by id order by login_date ASC) as rnk from Logins) tmp
+group by id, date_sub(login_date, INTERVAL rnk DAY)
+having count(login_date)>4) 
+order by id
+
 Table Accounts:
 
 +---------------+---------+
